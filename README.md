@@ -154,6 +154,18 @@ message MessageContainsMap
 }
 ```
 
+##JSON(proto3)
+```swift
+let personBuilder = Person.builder()
+personBuilder.id = 123
+personBuilder.name = "Bob"
+personBuilder.email = "bob@example.com"
+let person = personBuilder.build()
+let jsonData = person.toJSON() //return NSData
+let jsonDictionaryObject:Dictionary<String,AnyObject> = person.encode()
+let personFromJson = Person.fromJSON(jsonData) //Person
+```
+
 ```swift
 final internal class MessageContainsMap : GeneratedMessage, GeneratedMessageProtocol, Hashable {
     ...
