@@ -38,7 +38,7 @@ public class CodedInputStream
     private var sizeLimit:Int32 = 0
     public init (data aData:NSData)
     {
-        buffer = NSMutableData(data: aData)
+        buffer = NSMutableData(bytesNoCopy: UnsafeMutablePointer<Void>(aData.bytes), length: aData.length, freeWhenDone: false)
         bufferSize = Int32(buffer.length)
         currentLimit = INT_MAX
         recursionLimit = DEFAULT_RECURSION_LIMIT

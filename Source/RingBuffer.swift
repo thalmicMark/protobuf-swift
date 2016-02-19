@@ -24,7 +24,7 @@ internal class RingBuffer
     
     init(data:NSMutableData)
     {
-        buffer = NSMutableData(data: data)
+        buffer = NSMutableData(bytesNoCopy: UnsafeMutablePointer<Void>(data.bytes), length: data.length, freeWhenDone: false)
     }
     func freeSpace() ->UInt32
     {
